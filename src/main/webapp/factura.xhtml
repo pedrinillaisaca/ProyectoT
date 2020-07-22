@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title> Factura</title>
+    <style type="">
+        .tabla {
+            border-collapse: collapse;
+        }
+
+        .cabeceraTabla {
+            text-align: center;
+            background: none repeat scroll 0 0 #E5E5E5;
+            border-bottom: 1px solid #BBBBBB;
+            padding: 8px;
+        }
+
+        .filaPar {
+            text-align: center;
+            border-top: 1px solid #BBBBBB;
+        }
+
+        .filaImpar {
+            text-align: center;
+            background: none repeat scroll 0 0 #F9F9F9;
+            border-top: 1px solid #BBBBBB;
+        }
+        .btn btn-success{
+            margin: 20px;
+        }
+        .container.col-md-5 {
+            MAX-WIDTH: 50%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="javascript"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" type="javascript"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" type="javascript"/>
+</h:head>
+<nav class="navbar navbar-expand-md navbar-dark" style="background-color: black">
+    <div>
+        <a href="https://www.javaguides.net" class="navbar-brand">TiendaOnline.com </a>
+    </div>
+
+    <ul class="navbar-nav">
+        <li><a href="/Practica01/Html/index.html" class="nav-link">Facturacion</a></li>
+    </ul>
+    <button class="btn  btn-outline-success my-2 my-sm-0 "  type="submit"> Cerrar Sesion</button>
+</nav>
+<h:body>
+
+    <div class="container col-md-5">
+    <div class="card">
+    <div class="card-body">
+
+    <h3> Factura</h3>
+    <h:form id="form">
+        <div class="alert alert-primary" role="alert">
+            Ingrese el usuario al que desee Facturar
+        </div>
+
+        <h:inputText class="form-group" id="nombre" value="#{detalleBean.cedula}"></h:inputText>
+        <h:commandButton class="btn btn-success" style="margin: 10px" value="BuscarPersona" >
+            <f:ajax execute="nombre" render="mensaje salida salida2 salida3 salida4 salida5" />
+        </h:commandButton>
+        <div class="alert alert-danger" role="alert">
+            <h:outputText id="mensaje" value="#{detalleBean.mensaje}"/>
+        </div>
+
+        <table class="table" >
+            <thead>
+            <tr>
+                <th scope="col"><h:outputLabel for="salida" value="Nombre:" ></h:outputLabel></th>
+                <th scope="col"><h:inputText id="salida" value="#{detalleBean.nombre}"></h:inputText></th>
+                <th scope="col"><h:outputLabel for="salida5" value="Apellido:" ></h:outputLabel></th>
+                <th scope="col"><h:inputText id="salida5" value="#{detalleBean.apellido}"></h:inputText></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row"><h:outputLabel for="salida2" value="Cedula:" ></h:outputLabel></th>
+                <td><h:inputText id="salida2" value="#{detalleBean.cedula}"></h:inputText></td>
+                <td scope="row" ><h:outputLabel for="salida3" value="Telefono:" ></h:outputLabel></td>
+                <td><h:inputText id="salida3" value="#{detalleBean.celular}"></h:inputText></td>
+            </tr>
+            <tr>
+                <th scope="row"><h:outputLabel for="salida4" value="Direccion:" ></h:outputLabel></th>
+                <td><h:inputText id="salida4" value="#{detalleBean.direccion}"></h:inputText></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p> </p>
+        <p> </p>
+
+        <h:commandButton   style="margin: 10px" class="btn btn-warning" value="Crear Persona" action="#{detalleBean.crearPersona()}">
+        </h:commandButton>
+    </h:form>
+
+    <h3>Detalle Factura</h3>
+
+    <h:form>
+        <div class="alert alert-primary" role="alert">
+            Ingrese el nombre y la cantidad del producto a Buscar!
+        </div>
+        <ul>
+            <li>Nombre:<h:inputText size="10" value="#{detalleBean.name}" /></li>
+            <li>Cantidad:<h:inputText size="10"
+                                      value="#{detalleBean.quantity}" />
+            </li>
+        </ul>
+        <h:commandButton value="Buscar Producto" style="margin: 10px"  class="btn btn-success" action="#{detalleBean.add}" />
+        <h:outputText id="producto" value="#{detalleBean.busqueda}"/>
+
+        <h:dataTable value="#{detalleBean.list}" var="o" styleClass="tabla"
+                     headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
+            <h:column>
+                <f:facet name="header">Codigo</f:facet>#{o.id}</h:column>
+            <h:column>
+                <f:facet name="header">Descripcion</f:facet>
+                <h:inputText value="#{o.name}" size="10" rendered="#{o.editable}" />
+                <h:outputText value="#{o.name}" rendered="#{not o.editable}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Cantidad</f:facet>
+                <h:inputText value="#{o.quantity}" size="10"
+                             rendered="#{o.editable}" />
+                <h:outputText value="#{o.quantity}" rendered="#{not o.editable}" />
+            </h:column>
+
+            ///precio subtotal
+            <h:column>
+                <f:facet name="header">Precio</f:facet>
+                <h:inputText value="#{o.precio}" size="10" rendered="#{o.editable}" />
+                <h:outputText value="#{o.precio}" rendered="#{not o.editable}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Subtotal</f:facet>
+                <h:inputText value="#{o.subtotal}" size="10"
+                             rendered="#{o.editable}" />
+                <h:outputText value="#{o.subtotal}" rendered="#{not o.editable}" ><f:convertNumber pattern="#0.00" /></h:outputText>
+            </h:column>
+
+
+
+            <h:column>
+                <f:facet name="header">Eliminar</f:facet>
+                <h:commandLink value="Delete" action="#{detalleBean.delete(o)}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Editar</f:facet>
+                <h:commandLink value="Edit" action="#{detalleBean.edit(o)}"
+                               rendered="#{not o.editable}" />
+                <h:commandLink value="Save" action="#{detalleBean.save(o)}"
+                               rendered="#{o.editable}" />
+            </h:column>
+        </h:dataTable>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">---- </th>
+                <th scope="col">---- </th>
+                <th scope="col">Subtotal</th>
+                <th scope="col"> <h:outputText value="#{detalleBean.subtotalcabecera}" ><f:convertNumber pattern="#0.00" /></h:outputText></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">---- </th>
+                <td>---- </td>
+                <td>Descuento</td>
+                <td><h:outputText value="#{detalleBean.descuento}" ><f:convertNumber pattern="#0.00" /></h:outputText></td>
+            </tr>
+            <tr>
+                <th scope="row">---- </th>
+                <td>---- </td>
+                <td>Iva</td>
+                <td><h:outputText value="#{detalleBean.iva}" ><f:convertNumber pattern="#0.00" /></h:outputText></td>
+            </tr>
+            <tr>
+                <th scope="row">---- </th>
+                <td>---- </td>
+                <td>Total A Pagar</td>
+                <td><h:outputText value="#{detalleBean.totalpagar}" ><f:convertNumber pattern="#0.00" /></h:outputText></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+
+        <h:commandButton value="CrearFactura" style="margin: 10px"  class="btn btn-success" action="#{detalleBean.crearFactura()}" />
+
+        <h:link value="listar Facturas" outcome="listarFacturas.xhtml" />
+
+    </h:form>
+    </div>
+    </div>
+    </div>
+</h:body>
+</html>
