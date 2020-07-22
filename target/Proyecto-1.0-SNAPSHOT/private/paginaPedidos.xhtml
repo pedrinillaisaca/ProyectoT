@@ -4,8 +4,7 @@
        xmlns:h="http://xmlns.jcp.org/jsf/html"
        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
        xmlns:f="http://xmlns.jcp.org/jsf/core"
-       xmlns:p="http://primefaces.org/ui"
-       xmlns:pe="http://primefaces.org/ui/extensions">
+
 
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -20,11 +19,11 @@
 <h:body styleClass="modal-body text-center">
     <h:outputLabel style="display: none" value="#{pedidoBean.cookie}"/>
     <div class="navbar navbar-light bg-light justify-content-between">
-        <p:graphicImage value=""/>
+<!--        <p:graphicImage value=""/>-->
         <a class="navbar-brand">Pedidos</a>
         <h:form>
             <h:commandLink action="#{pedidoBean.redirectFacturas}" styleClass="btn btn-success" value="Regresar!"/>
-            <p:commandLink action="#{pedidoBean.cerrarSesion}" styleClass="btn btn-danger" style="margin-left: auto" value="Cerrar Sesion"/>
+            <h:commandLink action="#{pedidoBean.cerrarSesion}" styleClass="btn btn-danger" style="margin-left: auto" value="Cerrar Sesion"/>
         </h:form>
     </div>
     <h3>Pedidos</h3>

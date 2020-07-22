@@ -133,13 +133,13 @@ public class PedidoBean implements Serializable {
 
         if(cookieEmpleado == null)
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/public/logIn.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/Proyecto/public/logIn.xhtml");
             } catch (Exception e) {
                 e.printStackTrace();
             }
         else if(cookieEmpleado.getValue().isEmpty()){
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/public/logIn.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/Proyecto/public/logIn.xhtml");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -151,7 +151,7 @@ public class PedidoBean implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().addResponseCookie("empleado", "", null);
         FacesContext.getCurrentInstance().getExternalContext().addResponseCookie("administrador", "", null);
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/public/paginaCatalogo.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/Proyecto/public/paginaCatalogo.xhtml");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -159,7 +159,7 @@ public class PedidoBean implements Serializable {
 
     public void redirectFacturas(){
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/factura.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/Proyecto/factura.xhtml");
         } catch (Exception e) {
             e.printStackTrace();
         }

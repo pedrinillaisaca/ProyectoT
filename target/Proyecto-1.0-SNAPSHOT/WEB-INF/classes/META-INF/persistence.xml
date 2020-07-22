@@ -3,8 +3,7 @@
 
     <persistence-unit name="Practica03.EJB.JSF.JPA" transaction-type="JTA">
 
-        <jta-data-source>jdbc/__ejemplo</jta-data-source>
-
+        <jta-data-source>jdbc/_practica</jta-data-source>
         <class>ec.edu.ups.entidad.Rol</class>
         <class>ec.edu.ups.entidad.Usuario</class>
         <class>ec.edu.ups.entidad.Categoria</class>

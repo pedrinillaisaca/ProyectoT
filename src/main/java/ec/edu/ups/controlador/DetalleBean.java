@@ -358,13 +358,13 @@ public class DetalleBean implements Serializable {
         System.out.println(cookie + "<-->" + cookie.getValue());
         if(cookie == null){
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/public/paginaCatalogo.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/Proyecto/public/paginaCatalogo.xhtml");
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }else if(cookie.getValue().isEmpty())
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/public/logIn.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/Proyecto/public/logIn.xhtml");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -373,7 +373,7 @@ public class DetalleBean implements Serializable {
 
     public void redirectPedido(){
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/private/paginaPedidos.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/Proyecto/private/paginaPedidos.xhtml");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -381,7 +381,7 @@ public class DetalleBean implements Serializable {
 
     public void anularFacturas(){
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/listarFacturas.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/Proyecto/listarFacturas.xhtml");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -393,7 +393,7 @@ public class DetalleBean implements Serializable {
         if(cookie.getValue().equals("")) System.out.println("Se ha nulificado la cookie de manera correcta!"); else
             System.out.println("Se ha nulificado el valor correctamente!");
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/public/paginaCatalogo.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/Proyecto/public/paginaCatalogo.xhtml");
         } catch (Exception e) {
             e.printStackTrace();
         }

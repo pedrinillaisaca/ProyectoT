@@ -296,14 +296,14 @@ public class ProductoBean implements Serializable {
             System.out.println(cookieValue + "<------");
             if (cookieValue.isEmpty()) {
                 try {
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("/public/logIn.xhtml");
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("/Proyecto/public/logIn.xhtml");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }else{
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/public/logIn.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/Proyecto/public/logIn.xhtml");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -319,7 +319,7 @@ public class ProductoBean implements Serializable {
         if(cookie.getValue().equals("")) System.out.println("Se ha nulificado la cookie de manera correcta!"); else
             System.out.println("Se ha nulificado el valor correctamente!");
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/public/paginaCatalogo.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/Proyecto/public/paginaCatalogo.xhtml");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -327,7 +327,7 @@ public class ProductoBean implements Serializable {
 
     public void redirectBodegas(){
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/private/paginaBodegas.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/Proyecto/private/paginaBodegas.xhtml");
         } catch (Exception e) {
             e.printStackTrace();
         }

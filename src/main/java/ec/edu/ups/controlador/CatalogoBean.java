@@ -139,7 +139,7 @@ public class CatalogoBean implements Serializable{
     public void redirect(){
         System.out.println("LEO");
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/Proyecto_war_exploded/public/logIn.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/Proyecto/public/logIn.xhtml");
         } catch (Exception e) {
             e.printStackTrace();
         }

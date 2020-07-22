@@ -21,12 +21,12 @@ public class NavigationController implements Serializable {
                 return "logIn";
 
             default:
-                return "/public/paginaCatalogo";
+                return "/Proyecto/public/paginaCatalogo";
         }
     }
 
     public String processLogin(){
-        return "/public/paginaAdministrador";
+        return "/Proyecto/public/paginaAdministrador";
     }
 
 }
